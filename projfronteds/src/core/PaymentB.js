@@ -23,12 +23,11 @@ const PaymentB = ({
     });
     const userId = isAuthenticated && isAuthenticated().user.id;
     const token = isAuthenticated && isAuthenticated().token;
-
+    console.log(token)
     const getToken = (userId, token) => {
         getmeToken(userId, token)
-            .then((info) => {
-                console.log("INFO", info);
-                if (info && info.error) {
+            .then(info => {
+                if (info.error) {
                     setInfo({
                         ...info,
                         error: info.error
@@ -39,7 +38,7 @@ const PaymentB = ({
 
                 }
                 else {
-                    const clientToken = info;
+                    const clientToken = info.clientToken;
                     setInfo({ clientToken });
                 }
 
@@ -74,7 +73,7 @@ const PaymentB = ({
                             />
                             <button
 
-                                className="bt btn-block btn-success">
+                                className="bt btn-block btn-success">Submit
 
                             </button>
 
